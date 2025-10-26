@@ -1,27 +1,72 @@
-
 /// CONTINUE FROM HERE
 
 /// https://www.google.com/search?client=firefox-b-e&channel=entpr&q=if+im+wrapping+app+in+context+provider+what+would+the+children+type+be
 
+import React, { useState, createContext, useContext, useEffect } from "react";
 
+type LanguageType = "ar" | "en";
 
+type LanguageProviderProps = {
+  children: React.ReactNode;
+  defaultLanguage?: LanguageType;
+  storageKey?: string;
+};
 
-//     import React, {  useState } from 'react';
-// import {LanguageContext} from './lib.ts'
-   
+type LanguageProviderState = {
+  language: LanguageType;
+  setLanguage: (language: LanguageType) => void;
+  rtlVal: "rtl" | undefined;
+  setRtlVal: (language: LanguageType) => void;
+};
 
+const initialState: LanguageProviderState = {
+  language: "ar",
+  setLanguage: () => null,
+  rtlVal: "rtl",
+  setRtlVal: () => null,
+};
 
-//     export const LanguageProvider = ({ children }) => {
-//       const [language, setLanguage] = useState('en'); // Default language
+const LanguageProviderContext =
+  createContext<LanguageProviderState>(initialState);
+export function LanguageProvider({
+  children,
+  defaultLanguage = "ar",
+  storageKey = "service-app-eg",
+  ...props
+}: LanguageProviderProps) {
+  const [language, setLanguage] = useState<LanguageType>(
+    () => (localStorage.getItem(storageKey) as LanguageType) || defaultLanguage
+  );
+  const [rtlVal, setRtlVal] = useState<"rtl" | undefined>(
+    language === "ar" ? "rtl" : undefined
+  );
+  useEffect(() => {}, [language, rtlVal]);
+  const value = {
+    language,
+    setLanguage: (language: LanguageType) => {
+      localStorage.setItem(storageKey, language);
+      setLanguage(language);
+      setRtlVal(language === "ar" ? "rtl" : undefined);
+    },
+    rtlVal,
+    setRtlVal: (language: LanguageType) => {
+      setRtlVal(language === "ar" ? "rtl" : undefined);
+    },
+  };
 
-//       const changeLanguage = (newLanguage:string) => {
-//         setLanguage(newLanguage);
-//         // You might also update i18next or other i18n library here
-//       };
+  return (
+    <LanguageProviderContext.Provider {...props} value={value}>
+      {children}
+    </LanguageProviderContext.Provider>
+  );
+}
 
-//       return (
-//         <LanguageContext.Provider value={{ language, changeLanguage }}>
-//           {children}
-//         </LanguageContext.Provider>
-//       );
-//     };
+export const useLanguage = () => {
+  const context = useContext(LanguageProviderContext);
+
+  if (context === undefined)
+    throw new Error("useLanguage must be used within a LanguageProvider");
+
+  return context;
+};
+
