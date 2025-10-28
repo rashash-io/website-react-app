@@ -4,6 +4,8 @@ import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Separator } from "@/components/ui/separator";
 
+import { NavLink } from "react-router-dom";
+
 import {
   Sheet,
   SheetContent,
@@ -14,7 +16,6 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Languge CONTEXT HERE
 
 export function HamburgerNavbar() {
   const { rtlVal } = useLanguage();
@@ -47,6 +48,7 @@ function MapNavList() {
     <ul dir={rtlVal}>
       {navPagesList.map((item) => (
         <li className="" key={item.id}>
+          <NavLink to={item.href}>navLink {item.name}</NavLink>
           <a href={item.href} className="h-10 flex items-center  space-x-4">
             <span className="">{item.icon}</span>
             <span className="h-3/4">
@@ -74,7 +76,8 @@ function SheetToggle() {
     <div>
       <Sheet>
         <SheetTrigger>
-          <ButtonIcon />
+          {/* <ButtonIcon /> */}
+          <Menu className="my-3" />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -88,16 +91,13 @@ function SheetToggle() {
               <span className="justify-self-center">Pages</span>
               <MapNavList />
               <div dir={rtlVal}>
-                <button onClick={()=> setLanguage(rtlVal ? "en" : "ar")}>
+                <button onClick={() => setLanguage(rtlVal ? "en" : "ar")}>
                   aaaaaaa
                   {rtlVal
                     ? "Switch language to English 🇺🇸"
-                    : "حول اللغة للعربية 🇪🇬"
-                    }
+                    : "حول اللغة للعربية 🇪🇬"}
                 </button>
-               
               </div>
-         
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
