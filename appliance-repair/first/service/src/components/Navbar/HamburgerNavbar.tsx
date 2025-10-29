@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { navPagesList } from "./data";
+import { navPagesList } from "@/lib/data";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { ThemeToggle } from "@/components/Navbar/theme-toggle";
 import { Separator } from "@/components/ui/separator";
 
 import { NavLink } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
+
 
 import {
   Sheet,
@@ -16,9 +18,10 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/context/LanguageContext";
 
-
 export function HamburgerNavbar() {
   const { rtlVal } = useLanguage();
+
+
   return (
     <nav dir={rtlVal} className="border-b-3  w-full mb-1  border-gray-700 p-4">
       <div className="grid-cols-6 grid">
@@ -30,8 +33,9 @@ export function HamburgerNavbar() {
           </div>
         </div>
         {/* CENTER */}
-        <div className="w-full  items-center flex justify-center col-span-4">
-          PAGE NAME CURRENT
+        <div className="w-full  items-center flex flex-col justify-center col-span-4">
+          <span className="font-extrabold text-2xl md:text-4xl">Panasonic</span>
+       
         </div>
         {/* RIGHT */}
         <div className="  items-center place-self-center justify-self-end ">
@@ -47,15 +51,29 @@ function MapNavList() {
   return (
     <ul dir={rtlVal}>
       {navPagesList.map((item) => (
-        <li className="" key={item.id}>
-          <NavLink to={item.href}>navLink {item.name}</NavLink>
-          <a href={item.href} className="h-10 flex items-center  space-x-4">
-            <span className="">{item.icon}</span>
-            <span className="h-3/4">
-              <Separator orientation="vertical" />
+        <li className="mx-1" key={item.id}>
+          <NavLink
+            to={item.href}
+            className={({ isActive }) =>
+              twMerge(
+                "group w-fit   hover:text-primary transition-all duration-700 ease-in-out  border-0 border-transparent border-b-3 py-1 hover:border-b-primary/50 items-center text-lg flex m-1",
+                isActive &&
+                  "text-primary transition-all duration-700 ease-in-out  font-bold"
+              )
+            }
+          >
+            <span className="text-xl bg-slate-800 p-2 rounded-full border-2  transition-all duration-700 ease-in-out group-hover:border-primary">
+              {item?.icon}
             </span>
-            <span>{item.name[rtlVal ? 1 : 0]}</span>
-          </a>
+            <span className="h-5 m-2">
+              <Separator
+                orientation="vertical"
+                className="text-primary transition-all duration-700 ease-in-out group-hover:bg-primary/50"
+              />
+            </span>
+
+            {item.name[rtlVal ? 1 : 0]}
+          </NavLink>
         </li>
       ))}
     </ul>
@@ -76,27 +94,33 @@ function SheetToggle() {
     <div>
       <Sheet>
         <SheetTrigger>
-          {/* <ButtonIcon /> */}
           <Menu className="my-3" />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>
-              {/* <div dir={textDirection}>
-                {textDirection ? "القائمة" : "Menu"}
-              </div> */}
-              {rtlVal ? "القائمة" : "Menu"}
-            </SheetTitle>
-            <SheetDescription>
-              <span className="justify-self-center">Pages</span>
+            <SheetTitle>{rtlVal ? "القائمة" : "Menu"}</SheetTitle>
+            <SheetDescription className="">
+              <div className="flex flex-col my-2">
+                <div className=" w-fit justify-center place-self-center  my-2 text-primary">
+                  {rtlVal ? "الصفحات" : "Pages"}
+                  <Separator className="bg-primary/50" />
+                </div>
+              </div>
               <MapNavList />
-              <div dir={rtlVal}>
-                <button onClick={() => setLanguage(rtlVal ? "en" : "ar")}>
-                  aaaaaaa
-                  {rtlVal
-                    ? "Switch language to English 🇺🇸"
-                    : "حول اللغة للعربية 🇪🇬"}
-                </button>
+
+              {/* LANGUAGE CTRL */}
+              <div
+                dir={rtlVal}
+                className="flex  border items-center justify-center  border-primary/50 rounded-lg p-2 "
+              >
+                <Button
+                  variant={"link"}
+                  className="mx-1 p-0"
+                  onClick={() => setLanguage(rtlVal ? "en" : "ar")}
+                >
+                  {rtlVal ? "English 🇺🇸" : "🇪🇬 للعربية"}
+                </Button>
+                {rtlVal ? "Switch language to" : "حول اللغة"}
               </div>
             </SheetDescription>
           </SheetHeader>

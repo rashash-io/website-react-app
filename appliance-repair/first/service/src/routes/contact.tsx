@@ -1,3 +1,7 @@
+import { GetBreadcrumb } from "@/components";
+
 export const Contact = ()=> {
-    return (<div>CONTACT</div>);
+    return (<div>
+        <GetBreadcrumb />
+        CONTACT</div>);
 }
