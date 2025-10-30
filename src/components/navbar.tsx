@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { navPagesList } from "@/lib/data";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/Navbar/theme-toggle";
+import { ThemeToggle } from "@/components";
 import { Separator } from "@/components/ui/separator";
 
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+
+import { Link } from "react-router-dom";
 
 import {
   Sheet,
@@ -16,33 +18,63 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/context/LanguageContext";
+import type { JSX } from "react";
 
-export function HamburgerNavbar() {
+export function Navbar() {
   const { rtlVal } = useLanguage();
 
   return (
     <nav
       dir={rtlVal}
-      className="border-b-3  w-full bg-slate-900/50 backdrop-blur-sm border-gray-700 p-4"
+      className="border-b-3 transition-all duration-1000 ease-in-out  h-18 sticky top-0 z-50 bg-slate-900/50 backdrop-blur-sm border-gray-700 shadow-md shadow-primary/20 "
     >
-      <div className="grid-cols-6 grid">
-        {/* LEFT */}
-        <div className=" justify-self-start place-self-center">
-          <div className=" flex items-center  ">
-            <SheetToggle />
-            <span className="mx-2"> {rtlVal ? "القائمة" : "Menu"} </span>
-          </div>
+      <div className="mx-auto grid grid-cols-6 h-full max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <Link to="/">
+          <span className="font-extrabold text-2xl md:text-4xl gap-3 hover:text-primary transition-all duration-500 ease-in-out ">
+            Panasonic
+          </span>
+        </Link>
+        {/* Nav LINKS*/}
+        <div className=" col-span-4 place-self-center backdrop-blur-lg py-1 rounded-xl  shadow-md shadow-primary/20">
+          <MapNavListInNav />
         </div>
-        {/* CENTER */}
-        <div className="w-full  items-center flex flex-col justify-center col-span-4">
-          <span className="font-extrabold text-2xl md:text-4xl">Panasonic</span>
-        </div>
-        {/* RIGHT */}
-        <div className="  items-center place-self-center justify-self-end ">
+        {/* THEME TOGGLE */}
+        <div className="  items-center place-self-center justify-self-end flex ">
           <ThemeToggle />
+          <span className="mx-2 text-secondary">|</span>
+          <LanguageToggle />
+          <SheetToggle />
         </div>
       </div>
     </nav>
+  );
+}
+function MapNavListInNav() {
+  const { rtlVal } = useLanguage();
+  return (
+    <ul dir={rtlVal} className="max-md:hidden flex">
+      {navPagesList.map((item) => (
+        <li className="mx-2" key={item.id}>
+          <NavLink
+            to={item.href}
+            className={({ isActive }) =>
+              twMerge(
+                "group w-fit   hover:text-primary transition-all duration-700 ease-in-out   py-1 items-center text-lg flex gap-1 ",
+                isActive &&
+                  "text-primary transition-all duration-700 ease-in-out  "
+              )
+            }
+          >
+            <span className="text-base! bg-slate-800 p-2 rounded-full transition-all duration-700 ease-in-out ">
+              {item?.icon}
+            </span>
+
+            {item.name[rtlVal ? 1 : 0]}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -91,10 +123,11 @@ export function ButtonIcon() {
 function SheetToggle() {
   const { rtlVal, setLanguage } = useLanguage();
   return (
-    <div>
+    <div className="md:hidden">
       <Sheet>
-        <SheetTrigger>
-          <Menu className="my-3" />
+        <SheetTrigger className="flex">
+          <span className="mx-2 "> {rtlVal ? "القائمة" : "Menu"} </span>
+          <Menu className="" />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -129,3 +162,20 @@ function SheetToggle() {
     </div>
   );
 }
+
+const LanguageToggle = (): JSX.Element => {
+  const { rtlVal, setLanguage } = useLanguage();
+  return (
+    <>
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={() => setLanguage(rtlVal ? "en" : "ar")}
+      >
+        <span className="h-[1.2rem] w-[1.2rem] scale-100  transition-all">
+          {rtlVal ? "🇺🇸" : "🇪🇬"}
+        </span>
+      </Button>
+    </>
+  );
+};
