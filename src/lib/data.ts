@@ -1,15 +1,21 @@
 import React from "react";
 //Social Media
-import { FaYoutube, FaLinkedin, FaTiktok, FaXTwitter } from "react-icons/fa6";
+import {
+  FaYoutube,
+  FaLinkedin,
+  FaTiktok,
+  FaXTwitter,
+  FaFileCircleQuestion,
+} from "react-icons/fa6";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 // Create JSX obj
 const FaYoutubeIcon = React.createElement(FaYoutube);
-const FaTiktokIcon   = React.createElement(FaTiktok);
-const FaLinkedinIcon  = React.createElement(FaLinkedin);
-const FaXTwitterIcon  = React.createElement(FaXTwitter);
+const FaTiktokIcon = React.createElement(FaTiktok);
+const FaLinkedinIcon = React.createElement(FaLinkedin);
+const FaXTwitterIcon = React.createElement(FaXTwitter);
 const FaFacebookIcon = React.createElement(FaFacebook);
 const FaInstagramIcon = React.createElement(FaInstagram);
-
+const FaFileCircleQuestionIcon = React.createElement(FaFileCircleQuestion);
 
 export const socialMedia = [
   {
@@ -113,11 +119,8 @@ export const phoneNumbers = [
   },
 ];
 
-
-
 //Navigation
-import type {JSX} from "react";
-
+import type { JSX } from "react";
 
 //Icons Imports
 import { TbContract, TbPhone, TbHome, TbInfoCircle } from "react-icons/tb";
@@ -129,35 +132,41 @@ const TbContractIcon = React.createElement(TbContract);
 
 //////Navigation Pages Page List
 export type NavPagesListType = {
-    id: number,
-    name: string[],
-    href: string,
-    icon?: JSX.Element
-}[]
+  id: number;
+  name: string[];
+  href: string;
+  icon?: JSX.Element;
+}[];
 
- export const navPagesList: NavPagesListType = [
-   {
-     id: 0,
-     name: ["Home", "الرئيسية"],
-     href: "/",
-     icon: TbHomeIcon,
-   },
-   {
-     id: 1,
-     name: ["Contact Us", "اتصل بنا"],
-     href: "/contact",
-     icon: TbPhoneIcon,
-   },
-   {
-     id: 2,
-     name: ["About Us", "من نحن"],
-     href: "/about",
-     icon: TbInfoCircleIcon,
-   },
-   {
-     id: 3,
-     name: ["Terms & Conditions", "الشروط و الاحكام"],
-     href: "/tos",
-     icon: TbContractIcon,
-   },
- ];
+export const navPagesList: NavPagesListType = [
+  {
+    id: 0,
+    name: ["Home", "الرئيسية"],
+    href: "/",
+    icon: TbHomeIcon,
+  },
+  {
+    id: 1,
+    name: ["Contact Us", "اتصل بنا"],
+    href: "/contact",
+    icon: TbPhoneIcon,
+  },
+  {
+    id: 2,
+    name: ["About Us", "من نحن"],
+    href: "/about",
+    icon: TbInfoCircleIcon,
+  },
+  {
+    id: 3,
+    name: ["Terms & Conditions", "الشروط و الاحكام"],
+    href: "/tos",
+    icon: TbContractIcon,
+  },
+  {
+    id: 4,
+    name: ["F.A.Q.", "الأسئلة المتداولة"],
+    href: "/faq",
+    icon: FaFileCircleQuestionIcon,
+  },
+];

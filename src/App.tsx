@@ -1,4 +1,4 @@
- import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   Layout,
@@ -8,6 +8,7 @@ import {
   Contact,
   TermsConditions,
 } from "@/routes";
+import FAQPage from "./routes/faq";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         element: <TermsConditions />,
         path: "/tos",
       },
+      {
+        element: <FAQPage />,
+        path: "/faq",
+      },
     ],
   },
 ]);
@@ -43,10 +48,8 @@ const router = createBrowserRouter([
 
 // }
 
-
 export function App() {
   return <RouterProvider router={router} />;
-
 }
 
 export default App;

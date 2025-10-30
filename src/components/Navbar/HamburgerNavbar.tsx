@@ -7,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-
 import {
   Sheet,
   SheetContent,
@@ -21,9 +20,11 @@ import { useLanguage } from "@/context/LanguageContext";
 export function HamburgerNavbar() {
   const { rtlVal } = useLanguage();
 
-
   return (
-    <nav dir={rtlVal} className="border-b-3  w-full mb-1  border-gray-700 p-4">
+    <nav
+      dir={rtlVal}
+      className="border-b-3  w-full bg-slate-900/50 backdrop-blur-sm border-gray-700 p-4"
+    >
       <div className="grid-cols-6 grid">
         {/* LEFT */}
         <div className=" justify-self-start place-self-center">
@@ -35,7 +36,6 @@ export function HamburgerNavbar() {
         {/* CENTER */}
         <div className="w-full  items-center flex flex-col justify-center col-span-4">
           <span className="font-extrabold text-2xl md:text-4xl">Panasonic</span>
-       
         </div>
         {/* RIGHT */}
         <div className="  items-center place-self-center justify-self-end ">
