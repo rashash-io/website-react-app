@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {
   Sheet,
@@ -19,9 +19,16 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/context/LanguageContext";
 import type { JSX } from "react";
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
 
 export function Navbar() {
   const { rtlVal } = useLanguage();
+  let location = useLocation();
+  useEffect(() => {
+    console.log("ggggggggggggggggggggggggggs");
+    gsap.fromTo(".content", { opacity: 0, x: 300 }, { opacity: 1, x: 0 });
+  }, [location]);
 
   return (
     <nav

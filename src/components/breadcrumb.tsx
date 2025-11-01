@@ -27,9 +27,9 @@ export const GetBreadcrumb = () => {
     return translatedPathName;
   } else {
     return (
-      <div className=" flex justify-center py-2 rounded-lg bg-slate-900 ">
+      <div className=" flex justify-center py-2 rounded-lg ">
         <Breadcrumb dir={rtlVal}>
-          <BreadcrumbList className="flex items-center justify-center bg-slate-950 rounded-xl px-4 py-1.5 border-2 border-primary/50 shadow-sm shadow-primary/50">
+          <BreadcrumbList className="flex items-center justify-center bg-black-950/40   rounded-xl px-4 py-1.5 border-2 border-primary/50 shadow-sm shadow-primary/50">
             <BreadcrumbItem>
               <BreadcrumbLink href="/" className="hover:text-primary  py-0 x-0">
                 {rtlVal ? "الرئيسية" : "Home"}

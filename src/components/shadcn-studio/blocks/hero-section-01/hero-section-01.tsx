@@ -1,15 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+import { BsCalendar2Date } from "react-icons/bs";
+
 const HeroSection = () => {
   return (
-    <section className="flex min-h-[calc(100dvh-4rem)] flex-1 flex-col justify-between gap-12 overflow-x-hidden pt-8 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
+    <section className="flex min-h-[calc(100dvh-4.5rem)] flex-1 flex-col justify-between gap-12 overflow-x-hidden pt-8 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
       {/* Hero Content */}
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 text-center sm:px-6 lg:px-8">
         <div className="bg-muted flex items-center gap-2.5 rounded-full border px-3 py-2">
-          <Badge className="rounded-full">AI-Powered</Badge>
+          <Badge className="rounded-full">معتمد</Badge>
           <span className="text-muted-foreground">
-            Solution for client-facing businesses
+            مركز صيانة اجهزة باناسونيك
           </span>
         </div>
 
@@ -56,9 +58,14 @@ const HeroSection = () => {
           <br />
           From refreshing appetizers to delightful desserts
         </p>
-
-        <Button size="lg" asChild>
-          <a href="#">Try It Now</a>
+        <a className="flex flex-row items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-accent font-bold py-2 px-4 border-b-4  border-[oklch(0.455 0.188 13.697)] hover:border-primary rounded">
+          <BsCalendar2Date size={40} className="text-4xl" />
+          احجز معادك دلوقتي
+        </a>
+        <Button size="lg" asChild className="mt-50">
+          <a href="#">
+            <BsCalendar2Date size={40} className="text-4xl" />
+          </a>
         </Button>
       </div>
 

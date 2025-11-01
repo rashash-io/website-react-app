@@ -5,10 +5,15 @@ import {
   ErrorPage,
   About,
   Home,
-  Contact,
   TermsConditions,
+  ContactUsPage,
 } from "@/routes";
 import FAQPage from "./routes/faq";
+import gsap from "gsap";
+
+const gsapLoader = () => {
+  return gsap.to(".content", { opacity: 0, x: 300, duration: 0.3 });
+};
 
 const router = createBrowserRouter([
   {
@@ -23,22 +28,27 @@ const router = createBrowserRouter([
         path: "/",
         index: true,
         id: "Home",
+        loader: gsapLoader,
       },
       {
         element: <About />,
         path: "/about",
+        loader: gsapLoader,
       },
       {
-        element: <Contact />,
+        element: <ContactUsPage />,
         path: "/contact",
+        loader: gsapLoader,
       },
       {
         element: <TermsConditions />,
         path: "/tos",
+        loader: gsapLoader,
       },
       {
         element: <FAQPage />,
         path: "/faq",
+        loader: gsapLoader,
       },
     ],
   },

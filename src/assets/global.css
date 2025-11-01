@@ -110,8 +110,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 } */
 
-
-
 :root {
   --radius: 0.65rem;
   --background: oklch(1 0 0);
@@ -121,6 +119,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
   --primary: oklch(0.586 0.253 17.585);
+  --primary-dark: oklch(0.455 0.188 13.697);
   --primary-foreground: oklch(0.969 0.015 12.422);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -155,6 +154,7 @@
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.645 0.246 16.439);
+  --primary-dark: oklch(0.455 0.188 13.697);
   --primary-foreground: oklch(0.969 0.015 12.422);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
@@ -181,7 +181,6 @@
   --sidebar-ring: oklch(0.41 0.159 10.272);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -190,4 +189,3 @@
     @apply bg-background text-foreground;
   }
 }
-

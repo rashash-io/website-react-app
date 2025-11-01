@@ -35,13 +35,7 @@ const navigationData: NavigationSection[] = [
 export const HeroSectionPage = () => {
   return (
     <div className="relative">
-      {/* Header Section */}
-      {/* <Header navigationData={navigationData} /> */}
-
-      {/* Main Content */}
-      <main className="flex flex-col">
-        <HeroSection />
-      </main>
+      <HeroSection />
     </div>
   );
 };
@@ -87,21 +81,10 @@ const CardHorizontalDemo = () => {
 export function Home() {
   return (
     <>
-      <div className="relative h-screen w-full">
-        <div
-          className="absolute md:-top-20 inset-0 bg-contain bg-no-repeat bg-top bg-[url(/src/assets/panasonic-hero.jpg)]"
-          //   style={{ backgroundImage: "url('/src/assets/panasonic-hero.jpg')" }}
-        >
-          {" "}
-          <HeroSectionPage />
-        </div>
-
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent-90 to-transparent"></div> */}
-      </div>
-      <section>
-        <div className="relative md:-top-25">
-          <div className="min-h-screen  bg-contain bg-top bg-clip-border bg-no-repeat bg-[url(/src/assets/panasonic-hero.jpg)]"></div>
-          <div className="absolute border-red-500 border inset-0 bg-gradient-to-t from-black via-transparent-70 to-transparent">
+      <section className="content">
+        <div className="relative md:-top-18">
+          <div className="min-h-screen  bg-contain bg-fixed bg-top bg-clip-border bg-no-repeat bg-[url(/src/assets/panasonic-hero.jpg)]"></div>
+          <div className="absolute rounded-lg border-red-500 border inset-0 bg-gradient-to-t from-black via-transparent-70 to-transparent">
             {" "}
             <HeroSectionPage />
           </div>

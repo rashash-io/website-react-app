@@ -14,11 +14,15 @@ import { GetBreadcrumb } from "@/components";
 
 // import { Phone } from "lucide-react";
 
-
 export const About = () => {
-  return <div>about
-    <GetBreadcrumb />
-  </div>;
+  return (
+    <section className="content">
+      <div>
+        about
+        <GetBreadcrumb />
+      </div>
+    </section>
+  );
 };
 export const About2 = () => {
   return (
