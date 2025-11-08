@@ -7,10 +7,13 @@ import { BiPhoneCall } from "react-icons/bi";
 import { MdPersonAdd } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
 import { Header } from "@/components";
-import { InteractiveGridPattern } from "@/components/ui/shadcn-io/interactive-grid-pattern";
 import { FaRegHandshake } from "react-icons/fa6";
 import { HiMiniArrowDownCircle } from "react-icons/hi2";
 import { Separator } from "@/components/ui/separator";
+
+//Cairo & Giza
+// 37482812
+// 37616102
 
 type ContactInfo = {
   title: string[];
@@ -31,7 +34,7 @@ const ContactUs = ({ contactInfo }: { contactInfo: ContactInfo }) => {
           <div>
             <div className={twMerge("flex", rtlVal && "order-3")}></div>
 
-            <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="grid items-center gap-12 lg:grid-cols-2 mt-5">
               <img
                 src="https://cdn.shadcnstudio.com/ss-assets/blocks/marketing/contact-us/image-1.png"
                 alt="Contact illustration"
@@ -43,9 +46,7 @@ const ContactUs = ({ contactInfo }: { contactInfo: ContactInfo }) => {
                   {rtlVal ? "سعداء لنكون في خدمتك" : "Happy to help you!"}
                 </h3>
                 <p className="text-muted-foreground mb-10 text-lg font-medium">
-                  shadcn/studio gives you the blocks and components you need to
-                  create a truly professional website, landing page or admin
-                  panel for your SaaS and gives the blocks.
+                  {/* ب */}
                 </p>
 
                 {/* Contact Info Grid */}
@@ -84,7 +85,7 @@ const ContactUs = ({ contactInfo }: { contactInfo: ContactInfo }) => {
 };
 
 export default ContactUs;
-type RtlValType = { rtlVal?: "rtl" | undefined };
+type RtlValType = "rtl" | undefined;
 const ContactHero = ({ rtlVal }: { rtlVal: RtlValType }) => {
   return (
     <>

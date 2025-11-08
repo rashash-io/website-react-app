@@ -13,24 +13,24 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const navigationData: NavigationSection[] = [
-  {
-    title: "Home",
-    href: "#",
-  },
-  {
-    title: "Products",
-    href: "#",
-  },
-  {
-    title: "About Us",
-    href: "#",
-  },
-  {
-    title: "Contacts",
-    href: "#",
-  },
-];
+// const navigationData: NavigationSection[] = [
+//   {
+//     title: "Home",
+//     href: "#",
+//   },
+//   {
+//     title: "Products",
+//     href: "#",
+//   },
+//   {
+//     title: "About Us",
+//     href: "#",
+//   },
+//   {
+//     title: "Contacts",
+//     href: "#",
+//   },
+// ];
 
 export const HeroSectionPage = () => {
   return (
@@ -43,11 +43,11 @@ const CardHorizontalDemo = () => {
   return (
     <Card className="max-w-sm py-0 sm:flex-row sm:gap-0">
       <CardContent className="px-0 h-full">
-        <div className="relative ">
+        {/* <div className="relative ">
           <div className="absolute top-0 -translate-y-1 bg-primary/80 h-25 w-25  rounded-r-xl flex items-center justify-center ">
             <FaGear className="text-4xl text-accent " />
           </div>
-        </div>
+        </div> */}
         <div className="flex  items-center ">
           <img
             src="https://cdn.shadcnstudio.com/ss-assets/components/card/image-3.png"
@@ -56,11 +56,11 @@ const CardHorizontalDemo = () => {
           />
 
           {/* <div className="relative flex items-center jutify-center h-full border border-red-500 ">
-          <FaGear className="absolute top-1/2" />
-        </div> */}
+            <FaGear className="absolute top-1/2" />
+          </div> */}
         </div>
       </CardContent>
-      {/* <div className="sm:min-w-54">
+      <div className="sm:min-w-54">
         <CardHeader className="pt-6">
           <CardTitle>Dreamy Colorwave Gradient</CardTitle>
           <CardDescription>
@@ -73,7 +73,7 @@ const CardHorizontalDemo = () => {
             Explore More
           </Button>
         </CardFooter>
-      </div> */}
+      </div>
     </Card>
   );
 };
@@ -84,8 +84,7 @@ export function Home() {
       <section className="content">
         <div className="relative md:-top-18">
           <div className="min-h-screen  bg-contain bg-fixed bg-top bg-clip-border bg-no-repeat bg-[url(/src/assets/panasonic-hero.jpg)]"></div>
-          <div className="absolute rounded-lg border-red-500 border inset-0 bg-gradient-to-t from-black via-transparent-70 to-transparent">
-            {" "}
+          <div className="absolute rounded-lg border-primary/50 border inset-0 bg-gradient-to-t from-black via-transparent-70 to-transparent">
             <HeroSectionPage />
           </div>
         </div>

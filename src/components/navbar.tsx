@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/context/LanguageContext";
 import type { JSX } from "react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 
 export function Navbar() {

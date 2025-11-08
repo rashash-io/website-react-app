@@ -1,26 +1,30 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+// import { Button }  from "@/components/ui/button";
 
 import { BsCalendar2Date } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="flex min-h-[calc(100dvh-4.5rem)] flex-1 flex-col justify-between gap-12 overflow-x-hidden pt-8 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
+    <section className="flex min-h-[calc(100dvh-4.5rem)]   flex-1 flex-col justify-between gap-12 overflow-x-hidden pt-8 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
       {/* Hero Content */}
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto h-[calc(100dvh-4.5rem)]  flex max-w-7xl flex-col  items-center gap-8 px-4 text-center sm:px-6 lg:px-8">
         <div className="bg-muted flex items-center gap-2.5 rounded-full border px-3 py-2">
           <Badge className="rounded-full">معتمد</Badge>
           <span className="text-muted-foreground">
             مركز صيانة اجهزة باناسونيك
           </span>
         </div>
-
-        <h1 className="text-3xl leading-[1.29167] font-bold text-balance sm:text-4xl lg:text-5xl">
-          Sizzling Summer Delights
+        <div
+          dir="rtl"
+          className="text-3xl mb-2 pb-2 font-bold text-balance sm:text-4xl lg:text-5xl bg-gradient-to-r from-pink-500 via-orange-700   to-indigo-700 bg-clip-text text-transparent"
+        >
+          اصنع اليوم اثر الغد
           <br />
-          <span className="relative">
-            Effortless
-            <svg
+          {/* <span className="relative border mt-4 text-transparent">
+            {/* <span className="">اصنع اليوم اثر الغد</span>
+            <br /> */}
+          {/* <svg
               width="223"
               height="12"
               viewBox="0 0 223 12"
@@ -47,34 +51,17 @@ const HeroSection = () => {
                   <stop offset="1" stopColor="var(--primary-foreground)" />
                 </linearGradient>
               </defs>
-            </svg>
-          </span>{" "}
-          Recipes for Parties!
-        </h1>
-
-        <p className="text-muted-foreground">
-          Dive into a world of flavor this summer with our collection of
-          Sizzling Summer Delights!
-          <br />
-          From refreshing appetizers to delightful desserts
-        </p>
-        <a className="flex flex-row items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-accent font-bold py-2 px-4 border-b-4  border-[oklch(0.455 0.188 13.697)] hover:border-primary rounded">
+            </svg> */}
+          {/* </span> */}
+        </div>
+        <Link
+          to="/contact"
+          className="flex mt-auto  -translate-y-3/4 flex-row items-center justify-center text-accent gap-2 bg-primary hover:bg-primary/80  font-bold py-2 px-4 border-b-4  border-[oklch(0.455 0.188 13.697)] hover:border-primary rounded"
+        >
           <BsCalendar2Date size={40} className="text-4xl" />
           احجز معادك دلوقتي
-        </a>
-        <Button size="lg" asChild className="mt-50">
-          <a href="#">
-            <BsCalendar2Date size={40} className="text-4xl" />
-          </a>
-        </Button>
+        </Link>
       </div>
-
-      {/* Image */}
-      {/* <img
-        src='https://cdn.shadcnstudio.com/ss-assets/blocks/marketing/hero/image-19.png'
-        alt='Dishes'
-        className='min-h-67 w-full object-cover'
-      /> */}
     </section>
   );
 };

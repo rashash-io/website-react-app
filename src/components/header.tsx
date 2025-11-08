@@ -1,6 +1,4 @@
 import { GetBreadcrumb } from "./breadcrumb";
-import React from "react";
-
 export type HeaderPropsType = {
   rtlVal?: "rtl" | undefined;
   textAr?: string;
